@@ -3,14 +3,24 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
 	const [enteredGoalText, setEnteredGoalText] = useState(['']);
+	const [courseGoals, setCourseGoals] = useState([]);
 
 	const goalInputHandler = (enteredText) => {
 		setEnteredGoalText(enteredText);
 	};
 
 	const addGoalHandler = () => {
-		console.log(enteredGoalText);
+		// With this the list is able to update for every item entry
+		// setCourseGoals((currentCourseGoals) => {
+		// 	console.log(currentCourseGoals);
+		// 	return [...currentCourseGoals, enteredGoalText];
+		// });
+		setCourseGoals((currentCourseGoals) => [
+			...currentCourseGoals,
+			enteredGoalText,
+		]);
 	};
+	let key = 0;
 
 	return (
 		<View style={styles.appContainer}>
@@ -23,7 +33,11 @@ export default function App() {
 				<Button title="Add Goal" onPress={addGoalHandler} />
 			</View>
 			<View style={styles.goalsContainer}>
-				<Text>List of goals...</Text>
+				{courseGoals.map((goal) => (
+					<Text key={(key += 1)} style={styles.goalItem}>
+						{goal}
+					</Text>
+				))}
 			</View>
 		</View>
 	);
