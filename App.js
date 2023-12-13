@@ -1,5 +1,13 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
+import {
+	StyleSheet,
+	Text,
+	View,
+	Button,
+	TextInput,
+	ScrollView,
+	FlatList,
+} from 'react-native';
 
 export default function App() {
 	const [enteredGoalText, setEnteredGoalText] = useState(['']);
@@ -13,14 +21,13 @@ export default function App() {
 		// With this the list is able to update for every item entry
 		// setCourseGoals((currentCourseGoals) => {
 		// 	console.log(currentCourseGoals);
-		// 	return [...currentCourseGoals, enteredGoalText];
+		// 	return [...currentCourseGoals, { text: enteredGoalText, id: Math.random().toString() },];
 		// });
 		setCourseGoals((currentCourseGoals) => [
 			...currentCourseGoals,
-			enteredGoalText,
+			{ text: enteredGoalText, key: Math.random().toString() },
 		]);
 	};
-	let key = 0;
 
 	return (
 		<View style={styles.appContainer}>
@@ -37,13 +44,20 @@ export default function App() {
 				/>
 			</View>
 			<View style={styles.goalsContainer}>
-        <ScrollView alwaysBounceVertical={false}>
-          {courseGoals.map((goal) => (
-            <View key={(key += 1)} style={styles.goalItem}>
-              <Text style={styles.goalText}>{goal}</Text>
-            </View>
-          ))}
-        </ScrollView>
+				<FlatList
+					data={courseGoals}
+					renderItem={(itemData) => {
+						return (
+							<View style={styles.goalItem}>
+								<Text style={styles.goalText}>
+									{itemData.item.text}
+								</Text>
+							</View>
+						);
+					}}
+          keyExtractor={(item, index) => {return item.id}}
+					alwaysBounceVertical={false}
+				></FlatList>
 			</View>
 		</View>
 	);
