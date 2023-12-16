@@ -30,7 +30,11 @@ const GoalInput = (props) => {
 						/>
 					</View>
 					<View style={styles.buttons}>
-						<Button color="#8446d5" title="Cancel" />
+						<Button
+							color="#8446d5"
+							title="Cancel"
+							onPress={props.onCancel}
+						/>
 					</View>
 				</View>
 			</View>
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'flex-start',
 		alignItems: 'center',
 		marginBottom: 20,
-    paddingTop: 32,
+		paddingTop: 32,
 		padding: 16,
 		borderBottomWidth: 1,
 		borderBottomColor: '#cccccc',
