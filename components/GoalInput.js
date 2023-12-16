@@ -29,6 +29,7 @@ const GoalInput = (props) => {
 				<TextInput
 					style={styles.textInput}
 					placeholder="Your course goal!"
+					placeholderTextColor="#474747"
 					onChangeText={goalInputHandler}
 					value={enteredGoalText}
 				/>
@@ -42,7 +43,7 @@ const GoalInput = (props) => {
 					</View>
 					<View style={styles.buttons}>
 						<Button
-							color="#8446d5"
+							color="#f31282"
 							title="Cancel"
 							onPress={props.onCancel}
 						/>
@@ -58,7 +59,7 @@ export default GoalInput;
 const styles = StyleSheet.create({
 	inputContainer: {
 		flex: 1,
-		backgroundColor: '#262626',
+		backgroundColor: '#353535',
 		justifyContent: 'flex-start',
 		alignItems: 'center',
 		paddingTop: 112,
@@ -72,13 +73,14 @@ const styles = StyleSheet.create({
 		margin: 20,
 	},
 	textInput: {
-		backgroundColor: 'white',
+		color: '#120438',
 		borderWidth: 1,
-		borderColor: '#cccccc',
-		width: '100%',
-		padding: 8,
 		borderColor: '#5e0acc',
+		backgroundColor: '#ebebeb',
+		borderRadius: 6,
+		width: '100%',
 		borderWidth: 2,
+		padding: 16,
 	},
 	buttonContainer: {
 		marginTop: 16,
