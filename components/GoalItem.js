@@ -22,14 +22,16 @@ const styles = StyleSheet.create({
 	goalItem: {
 		margin: 8,
 		borderRadius: 6,
-		backgroundColor: '#8446d5',
+		backgroundColor: '#ebebeb',
+
+		borderColor: '#5e0acc',
+		borderWidth: 2,
 	},
 	// IOS
 	pressedItem: {
 		opacity: 0.5,
 	},
 	goalText: {
-		color: 'white',
 		padding: 8,
 	},
 });

@@ -28,11 +28,13 @@ export default function App() {
 
 	return (
 		<View style={styles.appContainer}>
-			<Button
-				title="Add New Goal"
-				color="#5e0acc"
-				onPress={startAddGoalHandler}
-			/>
+			<View style={styles.addgoalbutton}>
+				<Button
+					title="Add New Goal"
+					color="#5e0acc"
+					onPress={startAddGoalHandler}
+				/>
+			</View>
 			<GoalInput
 				visible={modalIsVisible}
 				onAddGoal={addGoalHandler}
@@ -62,11 +64,16 @@ export default function App() {
 
 const styles = StyleSheet.create({
 	appContainer: {
+		backgroundColor: '#262626',
 		flex: 1,
-		paddingTop: 50,
+		paddingVertical: 75,
 		paddingHorizontal: 16,
 	},
 	goalsContainer: {
 		flex: 8,
+    margin: 5,
 	},
+  addgoalbutton: {
+    paddingBottom: 16,
+  }
 });
