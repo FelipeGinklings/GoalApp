@@ -19,19 +19,26 @@ const GoalInput = (props) => {
 		props.onAddGoal(enteredGoalText);
 		setEnteredGoalText('');
 	};
+
+	const cleanInput = () => {
+		props.onCancel();
+		setEnteredGoalText('');
+	};
+
 	return (
 		<Modal visible={props.visible} animationType="slide">
 			<View style={styles.inputContainer}>
 				<Image
 					style={styles.image}
 					source={require('../assets/images/goal.png')}
+					// source="some/path/to/image.png" Making error on purposely
 				></Image>
 				<TextInput
 					style={styles.textInput}
 					placeholder="Your course goal!"
 					placeholderTextColor="#474747"
 					onChangeText={goalInputHandler}
-					value={enteredGoalText}
+					value={enteredGoalText.toString()} // Why?
 				/>
 				<View style={styles.buttonContainer}>
 					<View style={styles.buttons}>
@@ -45,7 +52,7 @@ const GoalInput = (props) => {
 						<Button
 							color="#f31282"
 							title="Cancel"
-							onPress={props.onCancel}
+							onPress={cleanInput}
 						/>
 					</View>
 				</View>
